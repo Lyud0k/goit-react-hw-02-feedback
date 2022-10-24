@@ -70,7 +70,7 @@ bad:badUp.bad + 1,
 }
   render() {
     return (
-      <div>
+      <div className={css.boxAll}>
 
         <div className={css.box}>
         <SectionTitle title='Please leave feedback'>

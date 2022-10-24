@@ -1,6 +1,10 @@
+.boxAll {
+    padding: 20px;
+}
 .box {
     background-color: lightblue;
     padding: 15px;
+    
 }
 
 ul {
