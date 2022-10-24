@@ -1,0 +1,15 @@
+.boxUp {
+    display: flex;
+    justify-content: space-around;
+    background-color: lightblue;
+}
+
+.list {
+    display: flex;
+
+}
+
+.click {
+    border-radius: 15%;
+    font-size: 40px;
+}

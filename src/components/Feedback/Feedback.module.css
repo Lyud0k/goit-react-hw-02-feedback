@@ -1,23 +1,21 @@
+.box {
+    background-color: lightblue;
+    padding: 15px;
+}
+
 ul {
     list-style: none;
+}
+
+.boxDown {
+    border: 5mm solid rgba(248, 248, 60, 0.807);
+    padding-left: 5px;
+
 }
 
 .text {
     justify-content: center;
 }
 
-.boxUp {
-    display: flex;
-        justify-content: space-around;
-}
 
-.list {
-    display: flex;
-    
-}
-
-.click {
-border-radius: 15%;
-font-size: 40px;
-}
 

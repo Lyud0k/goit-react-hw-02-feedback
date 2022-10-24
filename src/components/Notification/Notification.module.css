@@ -1,0 +1,10 @@
+.text {
+    display: flex;
+    justify-content: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* border: 3mm solid rgba(248, 248, 60, 0.807); */
+    background-color: rgba(248, 248, 60, 0.807);
+    margin-top: 0;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}

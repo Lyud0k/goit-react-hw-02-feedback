@@ -1,11 +1,9 @@
 import React from 'react';
 import css from 'components/Feedback/Feedback.module.css';
-
-// import smile from './picture/smile.jpg';
-// import so from './picture/so.jpg';
-// import bad from './picture/bad.jpg';
 import { Statistics } from './../Statistics/Statistics';
-
+import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
+import { SectionTitle } from 'components/SectionTitle/SectionTitle';
+import { Notification } from 'components/Notification/Notification';
 
 export class Feedback extends React.Component{
   // constructor() {
@@ -19,6 +17,7 @@ export class Feedback extends React.Component{
     good: 0,
     neutral: 0,
     bad: 0,
+    visible: false,
   }
   // clickGood = (evt) => {
   //   const target = evt.target;
@@ -32,6 +31,7 @@ export class Feedback extends React.Component{
   //   })
   // }
   clickGood = () => {
+    this.setState({ visible: true });
     this.setState((goodUp) => {
       console.log(goodUp);
       return {
@@ -40,6 +40,7 @@ export class Feedback extends React.Component{
     });
   }
   clickNeutral = () => {
+    this.setState({ visible: true });
     this.setState((neutralUp) => {
       return {
 neutral:neutralUp.neutral + 1,
@@ -47,6 +48,7 @@ neutral:neutralUp.neutral + 1,
  })
   }
   clickBad = () => {
+    this.setState({ visible: true });
     this.setState((badUp) => {
       return {
 bad:badUp.bad + 1,
@@ -60,11 +62,32 @@ bad:badUp.bad + 1,
   countPositiveFeedbackPercentage = () => {
     return Number.parseInt(this.state.good === 0 ? 0 : this.state.good * 100 / this.countTotalFeedback());
   }
+  no = () => {
+    this.setState({ visible: false });
+  }
+  yes = () => {
+    this.setState({ visible: true });
+}
   render() {
     return (
       <div>
-    <h1 className={css.text}>Please leave feedback</h1>
-    <ul className={css.boxUp}>
+
+        <div className={css.box}>
+        <SectionTitle title='Please leave feedback'>
+       
+        <FeedbackOptions 
+        options = {[
+            this.clickGood,
+        this.clickNeutral,
+        this.clickBad,
+        ]}
+        onLeaveFeedback = {[
+        'good', 'neutral', 'bad'
+        ]}
+        ></FeedbackOptions>
+          </SectionTitle>
+          </div>
+    {/* <ul className={css.boxUp}>
       <li className={css.list}>
             <button className={css.click} type='button' onClick={this.clickGood }>Good</button>
       </li>
@@ -74,16 +97,26 @@ bad:badUp.bad + 1,
       <li className={css.list}>
             <button className={css.click} type='button' onClick={this.clickBad}>Bed</button>
       </li>
-    </ul>
-        <h2>Statistic</h2>
+    </ul> */}
+        {this.countTotalFeedback() === 0 ? (<Notification message = 'There is no feedback' />) : 
+                <div className={css.boxDown}>
+        <SectionTitle title='Statistic'>
+        
         <Statistics
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
           total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+              
         />
+            </SectionTitle>
+            
+          </div>}
+      
+        {/* {this.state.visible && (
 
+          )} */}
   </div>
     );
   }
