@@ -18,7 +18,7 @@ export class Feedback extends React.Component{
     good: 0,
     neutral: 0,
     bad: 0,
-    visible: false,
+    // visible: false,
   }
   // clickGood = (evt) => {
   //   const target = evt.target;
@@ -26,36 +26,39 @@ export class Feedback extends React.Component{
   //   console.log(this);
   //   console.log(target);
   // }
-  // clickGood = () => {
-  //   this.setState({
-  //     fine: 99,
-  //   })
-  // }
-  clickGood = () => {
-    this.setState({ visible: true });
-    this.setState((goodUp) => {
-      console.log(goodUp);
-      return {
-        good:goodUp.good + 1,
-      }
-    });
-  }
-  clickNeutral = () => {
-    this.setState({ visible: true });
-    this.setState((neutralUp) => {
-      return {
-neutral:neutralUp.neutral + 1,
-      }
- })
-  }
-  clickBad = () => {
-    this.setState({ visible: true });
-    this.setState((badUp) => {
-      return {
-bad:badUp.bad + 1,
-      }
-})
-  }
+
+//   clickGood = () => {
+//     this.setState({ visible: true });
+//     this.setState((goodUp) => {
+//       console.log(goodUp);
+//       return {
+//         good:goodUp.good + 1,
+//       }
+//     });
+//   }
+//   clickNeutral = () => {
+//     this.setState({ visible: true });
+//     this.setState((neutralUp) => {
+//       return {
+// neutral:neutralUp.neutral + 1,
+//       }
+//  })
+//   }
+//   clickBad = () => {
+//     this.setState({ visible: true });
+//     this.setState((badUp) => {
+//       return {
+// bad:badUp.bad + 1,
+//       }
+// })
+//   }
+  
+    onLeaveFeedback = (el) => {
+    this.setState((prevState) => ({
+      [el]: prevState[el] + 1,
+    }));
+  };
+
   countTotalFeedback = () => {
     const pl = this.state.good + this.state.neutral + this.state.bad;
     return pl;
@@ -63,12 +66,12 @@ bad:badUp.bad + 1,
   countPositiveFeedbackPercentage = () => {
     return Number.parseInt(this.state.good === 0 ? 0 : this.state.good * 100 / this.countTotalFeedback());
   }
-  no = () => {
-    this.setState({ visible: false });
-  }
-  yes = () => {
-    this.setState({ visible: true });
-}
+//   no = () => {
+//     this.setState({ visible: false });
+//   }
+//   yes = () => {
+//     this.setState({ visible: true });
+// }
   render() {
     return (
       <div className={css.boxAll}>
@@ -77,14 +80,16 @@ bad:badUp.bad + 1,
         <SectionTitle title='Please leave feedback'>
        
         <FeedbackOptions 
-        options = {[
-            this.clickGood,
-        this.clickNeutral,
-        this.clickBad,
-        ]}
-        onLeaveFeedback = {[
-        'good', 'neutral', 'bad'
-        ]}
+        // options = {[
+        //     this.clickGood,
+        // this.clickNeutral,
+        // this.clickBad,
+        // ]}
+        // onLeaveFeedback = {[
+        // 'good', 'neutral', 'bad'
+        // ]}
+             options = {Object.keys(this.state)}
+              onLeaveFeedback = {this.onLeaveFeedback} 
         ></FeedbackOptions>
           </SectionTitle>
           </div>
