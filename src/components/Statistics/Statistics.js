@@ -2,6 +2,7 @@ import css from 'components/Statistics/Statistics.module.css';
 import smile from './picture/smile.jpg';
 import so from './picture/so.jpg';
 import sad from './picture/bad.jpg';
+import PropTypes from 'prop-types';
 
 export const Statistics = ({good, neutral, bad, total, positivePercentage }) => {
     return (
@@ -14,4 +15,12 @@ export const Statistics = ({good, neutral, bad, total, positivePercentage }) => 
           <li className={css.listOc}><p className={css.text}>Positive feedback: {positivePercentage}% </p></li>
     </ul>
    ) 
+}
+
+Statistics.protoType = {
+      good: PropTypes.number,
+      neutral: PropTypes.number,
+      bad: PropTypes.number,
+      total: PropTypes.func,
+      positivePercentage: PropTypes.func,   
 }

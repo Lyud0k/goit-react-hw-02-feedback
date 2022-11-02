@@ -1,4 +1,6 @@
-import css from 'components/FeedbackOptions/FeedbackOptions.module.css';  
+import css from 'components/FeedbackOptions/FeedbackOptions.module.css'; 
+import PropTypes from 'prop-types';
+
 export const FeedbackOptions = ({options, onLeaveFeedback }) => {
     return (
 <ul className={css.boxUp}>
@@ -13,4 +15,9 @@ export const FeedbackOptions = ({options, onLeaveFeedback }) => {
       </li> 
     </ul>
     )
+}
+
+FeedbackOptions.protoType = {
+      options:  PropTypes.func,
+onLeaveFeedback: PropTypes.string,
 }

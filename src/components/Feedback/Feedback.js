@@ -5,6 +5,7 @@ import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 import { SectionTitle } from 'components/SectionTitle/SectionTitle';
 import { Notification } from 'components/Notification/Notification';
 
+
 export class Feedback extends React.Component{
   // constructor() {
   //   super();
